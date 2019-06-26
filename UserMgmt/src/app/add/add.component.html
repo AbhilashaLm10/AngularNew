@@ -1,0 +1,35 @@
+<form (ngSubmit)="saveUser()" #addForm="ngForm">
+  <table class="table table-border">
+    <tr><th colspan="2">Add User</th></tr>
+    <tr><td>First Name</td>
+      <td><input [(ngModel)]="user.firstName" required
+            placeholder="Enter First Name" pattern="[A-Za-z]{5,}"></td>
+          <div *ngIf="firstName.invalid" class="alert alert-danger">
+            First name is required
+          </div>
+      </tr>
+    <tr><td>Last Name</td>
+      <td><input [(ngModel)]="user.lastName" required
+              placeholder="Enter Last Name" pattern="[A-Za-z]{5,}"></td>
+              <div *ngIf="lastName.invalid" class="alert alert-danger">
+                Last name is required
+              </div>
+            </tr>
+    <tr><td>Email ID</td>
+        <td><input [(ngModel)]="user.email" type="email" required
+              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" placeholder="Enter valid email" /></td>
+              <div *ngIf="email.invalid" class="alert alert-danger">
+                Email is required
+              </div></tr>
+    <tr><td>Mobile No.</td>
+        <td><input [(ngModel)]="user.mobile" required 
+              pattern="[0-9]{10}" placeholder="Enter Mobile No"></td>
+              <div *ngIf="mobile.invalid" class="alert alert-danger">
+                Mobile No. is required
+              </div>
+            </tr>
+    <tr><th colspan="2">
+        <button type="submit" [disabled]="!addForm.valid">Save User</button>
+    </th></tr>
+  </table>  
+  </form>
